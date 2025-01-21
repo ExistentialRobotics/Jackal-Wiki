@@ -1,0 +1,5 @@
+<launch>
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ucs11_jackal)/rviz/ref_gvn_ros.rviz" />
+    <node name="rqt_multiplot_1" pkg="rqt_multiplot" type="rqt_multiplot" args="--multiplot-config $(find ucs11_jackal)/plot/safety_metric_and_err_code.xml --multiplot-run-all"/>
+    <node name="rqt_multiplot_2" pkg="rqt_multiplot" type="rqt_multiplot" args="--multiplot-config $(find ucs11_jackal)/plot/cone_controller_debug.xml --multiplot-run-all"/>
+</launch>

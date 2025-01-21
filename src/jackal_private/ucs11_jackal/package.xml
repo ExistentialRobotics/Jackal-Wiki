@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>ucs11_jackal</name>
+  <version>0.0.0</version>
+  <description>Customization repository for the UCS11 Jackal project.</description>
+
+  <maintainer email="jyang@clearpathrobotics.com">Joey Yang</maintainer>
+
+  <license>Clearpath Proprietary</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <exec_depend>jackal_description</exec_depend>
+ 
+</package>

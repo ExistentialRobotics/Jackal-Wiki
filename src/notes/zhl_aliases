@@ -1,0 +1,86 @@
+alias tsh='trash-put'
+alias gits='git status'
+alias gita='git add'
+alias gitb='git branch'
+alias gitc='git commit -m'
+alias cdd='cd ~/Downloads' # working directory most recently used
+alias cds='cd ~/SynologyDrive'
+alias cdg='cd ~/git' 
+alias gith='echo "* display most recent 10 history"; git hist -10'
+alias oo='xdg-open' # open folder
+alias u='cd .. ' # go back 
+alias c='clear' # clear terminal
+alias fs='du -h --max-depth=1 | sort -hr' # show file size
+alias esh='exec zsh' # sourcing zshrc 
+alias ll='ls -alF'
+alias rostf='rosrun rqt_tf_tree rqt_tf_tree &'
+alias sshjackal='ssh administrator@192.168.10.109'
+
+# rsync plugin dry run
+alias rscp="rsync -anvz --progress -h"
+alias rsmv="rsync -anvz --progress -h --remove-source-files"
+
+# some functions
+function init_ros(){
+    source /opt/ros/noetic/setup.zsh
+    echo "sourcing /opt/ros/noetic/setup.zsh"
+
+    WORKDIR=/home/$USER/jackal_ws
+    FILE=$WORKDIR/devel/setup.zsh
+    # echo "FILE is $FILE"
+    if [ -f "$FILE" ]; then
+        source $FILE
+        echo "sourcing $FILE"
+    else
+        echo "file $FILE does [not] exist"
+    fi
+}
+
+# some functions
+function init_noetic(){
+    source /opt/ros/noetic/setup.zsh
+    echo "sourcing /opt/ros/noetic/setup.zsh"
+}
+
+function rtf(){
+    echo "rosrun rqt_tf_tree rqt_tf_tree &"
+    rosrun rqt_tf_tree rqt_tf_tree &
+}
+
+function set_jackal_master(){
+  export ROS_MASTER_URI=http://cpr-j100-0734:11311
+  export ROS_IP=192.168.10.143 # my T580 ip
+  echo "ROS_MASTER_URI=http://cpr-j100-0734:11311"
+  echo "export ROS_IP=[YOUR LAPTOP IP]"
+}
+
+function init_jackal_hw_zsh(){
+    source /opt/ros/noetic/setup.zsh
+    source ~/jackal_robot/devel/setup.zsh
+    export JACKAL_URDF_EXTRAS=~/jackal_robot/src/jackal_private/ucs11_jackal/urdf/jackal_description.urdf.xacro
+    echo "sourcing /opt/ros/noetic/setup.zsh"
+    echo "sourcing ~/jackal_robot/devel/setup.zsh"
+    echo "setting JACKAL_URDF_EXTRAS to ~/jackal_robot/src/jackal_private/ucs11_jackal/urdf/jackal_description.urdf.xacro"
+    export ROS_MASTER_URI=http://cpr-j100-0734:11311
+    export ROS_IP=192.168.10.143 # my T580 ip
+    echo "ROS_MASTER_URI=http://cpr-j100-0734:11311"
+    echo "export ROS_IP=[YOUR LAPTOP IP]"
+}
+
+function init_jackal_hw_bash(){
+    source /opt/ros/noetic/setup.bash
+    source ~/jackal_robot/devel/setup.bash
+    export JACKAL_URDF_EXTRAS=~/jackal_robot/src/jackal_private/ucs11_jackal/urdf/jackal_description.urdf.xacro
+    echo "sourcing /opt/ros/noetic/setup.bash"
+    echo "sourcing ~/jackal_robot/devel/setup.bash"
+    echo "setting JACKAL_URDF_EXTRAS to ~/jackal_robot/src/jackal_private/ucs11_jackal/urdf/jackal_description.urdf.xacro"
+    export ROS_MASTER_URI=http://cpr-j100-0734:11311
+    export ROS_IP=192.168.10.143 # my T580 ip
+    echo "ROS_MASTER_URI=http://cpr-j100-0734:11311"
+    echo "export ROS_IP=[YOUR LAPTOP IP]"
+}
+
+
+# automatically runned functions
+# init_ros
+# init_noetic

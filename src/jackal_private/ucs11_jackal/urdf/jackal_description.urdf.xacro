@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!--Create a fixed joint to connect the mesh to the rest of the robot-->
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+   
+   <!-- Link for the top plate mesh -->
+  <link name="jackal_top_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://ucs11_jackal/meshes/jackal_top.STL"/>
+      </geometry>
+	<material name="black"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://ucs11_jackal/meshes/jackal_top.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+ <joint name="jackal_top_joint" type="fixed">
+    <parent link="mid_mount"/>
+    <child link="jackal_top_link"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+  </joint>
+
+<!-- Link for GPS Payload -->
+  <link name="garmin_navsat">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </link>
+
+  <joint name="gps_sensor_joint" type="fixed">
+    <parent link="mid_mount" />
+    <child link="garmin_navsat" />
+    <origin xyz="0.12 -0.12 0.016" rpy="0 0 0"/>
+  </joint>
+
+<!-- Link for 3D Lidar -->
+  <xacro:include filename="$(find ouster_description)/urdf/OS1-64.urdf.xacro" />
+  <xacro:OS1-64 parent="rear_mount">
+    <origin xyz="0.0 0.0 0.1144" rpy="0 0 0" />
+  </xacro:OS1-64>
+
+
+</robot>
